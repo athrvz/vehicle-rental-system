@@ -8,17 +8,13 @@ module.exports = (sequelize) => {
       defaultValue: DataTypes.UUIDV4, // Generate UUID automatically
       primaryKey: true
     },
-    firstName: {
+    first_name: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    lastName: {
+    last_name: {
       type: DataTypes.STRING,
       allowNull: false
-    },
-    name: {
-      type: DataTypes.STRING,
-      allowNull: true
     }
   }, {
     timestamps: false

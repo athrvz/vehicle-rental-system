@@ -4,7 +4,7 @@ const currentFileName = (path.basename(__filename));
 
 const query = `
   CREATE TABLE IF NOT EXISTS rentals (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id CHAR(36) PRIMARY KEY,
     userId CHAR(36) NOT NULL,
     vehicleId CHAR(36) NOT NULL,
     from_date DATE,
