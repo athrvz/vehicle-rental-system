@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js",
     "migrate": "node ./utilities/migrate.js",
-    "seed": "node ./utilities/seed.js"
+    "seed": "node ./utilities/seed.js",
+    "init_migration_trakcer": "node ./migrations/migration-schema.js"
   },
   "keywords": [],
   "author": "",

@@ -2,17 +2,13 @@ const { DataTypes } = require('sequelize');
 
 // Define the user model
 module.exports = (sequelize) => {
-  const User = sequelize.define('User', {
+  const MigrationSchema = sequelize.define('migration_schemas', {
     id: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4, // Generate UUID automatically
       primaryKey: true
     },
-    first_name: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    last_name: {
+    migration_script_name: {
       type: DataTypes.STRING,
       allowNull: false
     }
@@ -20,5 +16,5 @@ module.exports = (sequelize) => {
     timestamps: false
   });
 
-  return User;
+  return MigrationSchema;
 };
