@@ -1,28 +1,33 @@
 const { DataTypes } = require('sequelize');
 
-// Define the user model
+
 module.exports = (sequelize) => {
-  const User = sequelize.define('User', {
+  const Vehicle = sequelize.define('Vehicle', {
     id: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4, // Generate UUID automatically
       primaryKey: true
     },
-    firstName: {
+    type: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    lastName: {
+    variant: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    name: {
+    wheels: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    registration_number: {
       type: DataTypes.STRING,
-      allowNull: true
+      allowNull: false,
+      unique: true
     }
   }, {
     timestamps: false
   });
 
-  return User;
+  return Vehicle;
 };
