@@ -1,4 +1,6 @@
 const { DataTypes } = require('sequelize');
+const User = require('./User');
+const Vehicle = require('./Vehicle');
 
 module.exports = (sequelize) => {
   const Rental = sequelize.define('Rental', {
@@ -39,8 +41,8 @@ module.exports = (sequelize) => {
     timestamps: false
   });
 
-  Rental.belongsTo(User, { onDelete: 'CASCADE', foreignKey: 'userId' });
-  Rental.belongsTo(Vehicle, { onDelete: 'CASCADE', foreignKey: 'vehicleId' });
+  // Rental.belongsTo(User, { onDelete: 'CASCADE', foreignKey: 'userId' });
+  // Rental.belongsTo(Vehicle, { onDelete: 'CASCADE', foreignKey: 'vehicleId' });
 
 
   return Rental;
