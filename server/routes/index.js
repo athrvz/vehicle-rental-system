@@ -75,9 +75,10 @@ router.post('/wheels', async (req, res) => {
 
 // Booking
 router.post('/book', async (req, res) => {
-  const { vehicleId, fromDate, toDate, userId } = req.body;
+  const { vehicleId, fromDate: from_date, toDate: to_date, userId } = req.body;
   try {
-    if (isAlreadyBooked(vehicleId, fromDate, toDate)) {
+    const isBooked = await isAlreadyBooked(vehicleId, from_date, to_date);
+    if (isBooked) {
       return res.status(200).send({
         booked: false,
         message: 'Selected vechicle already booked for the period, Please book another one.'
@@ -85,7 +86,7 @@ router.post('/book', async (req, res) => {
     }
 
     const booking = await Rental.create({
-      vehicleId, fromDate, toDate, userId
+      vehicleId, from_date, to_date, userId
     });
     return res.status(200).send({
       booked: true,
@@ -101,14 +102,17 @@ router.post('/book', async (req, res) => {
 });
 
 async function isAlreadyBooked(vehicleId, fromDate, toDate) {
+  console.log({ fromDate, toDate });
   const bookings = await Rental.findOne({
     where: {
       vehicleId,
-      fromDate: { [Op.gte]: fromDate },
-      toDate: { [Op.lte]: toDate }
+      from_date: { [Op.between]: [
+        new Date(fromDate), new Date(toDate)
+      ] },
     },
     raw: true
   });
+  console.log({ bookings });
   return !!bookings;
 }
 
