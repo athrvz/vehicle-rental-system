@@ -1,3 +1,0 @@
-1. npm run init_migration_trakcer
-2. npm run migrate
-3. npm run seed

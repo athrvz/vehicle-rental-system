@@ -25,15 +25,15 @@ module.exports = (sequelize) => {
         key: 'id'
       }
     },
-    fromDate: {
+    from_date: {
       type: DataTypes.DATE,
       allowNull: false
     },
-    toDate: {
+    to_date: {
       type: DataTypes.DATE,
       allowNull: false
     },
-    createAt: {
+    created_at: {
       type: DataTypes.DATE,
       allowNull: true
     }
